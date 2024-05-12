@@ -1,3 +1,4 @@
+import time
 import re
 
 def tokenize(text: str) -> list:
@@ -34,12 +35,31 @@ def tokenize(text: str) -> list:
     return token_list
 
 
+def measure_execution_time(func, *args, **kwargs):
+    start_time = time.time()
+    result = func(*args, **kwargs)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return result, execution_time
+
+
 if __name__ == "__main__":
     text = "Text to be tokenized. Maybe. Very number 10, XIX, XV"
-    tokens = tokenize(text)
+    tokens, time_to_finish1 = measure_execution_time(tokenize, text)
     for token in tokens:
         print(token)
 
     text = "Today is 12/05/2024, the time is 14:30. Chapter XVII discusses Roman history. The deadline is approaching, it's 2024-05-12 or 05/12/2024. The meeting is scheduled for 09:00 AM."
-    for token in tokenize(text):
+    tokens, time_to_finish2 = measure_execution_time(tokenize, text)
+    for token in tokens:
         print(token)
+
+    with open('lore_ipsum.txt' ,'r') as text:
+        text = text.read()
+    tokens, time_to_finish3 = measure_execution_time(tokenize, text)
+    for token in tokens:
+        print(token)
+
+    print("first text ", time_to_finish1, "seconds")
+    print("second text ", time_to_finish2, "seconds")
+    print("third text ", time_to_finish3, "seconds")
