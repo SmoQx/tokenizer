@@ -1,12 +1,7 @@
-# tokenizer
-tokenizer
+# Tokenizer
 
-Powód dlaczego wybrałem użycie regex jakos oposób tokenizacji ciągów znaków jest dość prosty.
-Użycie regex'a skraca czas wymagany na stworzenie logiki przerabiania ciągu znaków na tokeny.
+Powód, dlaczego wybrałem użycie wyrażeń regularnych jako sposobu tokenizacji ciągów znaków, jest dość prosty. Użycie wyrażeń regularnych skraca czas wymagany na stworzenie logiki przekształcania ciągu znaków na tokeny.
 
-Funkcja przyjmuje jako argument ciąg znaków i próbuje znaleźć wszystkie elementy, które wpasowują
-się do podanego wzorca. Lista wzorców przetwarzana jest przez filtr klasyfikujący znaleziony wzorzec.
+Funkcja przyjmuje jako argument ciąg znaków i próbuje znaleźć wszystkie elementy, które wpasowują się do podanego wzorca. Lista wzorców jest przetwarzana przez filtr klasyfikujący znalezione wzorce.
 
-Nie jest to sposób bez wad bo mogą zdarzyś się elementy, które nie wpasują sie we wzorzec i zostanie
-zaklasyfikowany błędnie. Problemem jest też fakt, że w przypadku dodania kolejego wzorca 
-wydłuży się czas wyszukiwania.
+Nie jest to sposób bez wad, ponieważ mogą zdarzyć się elementy, które nie wpasują się w wzorzec i zostaną zaklasyfikowane błędnie. Problemem jest także fakt, że w przypadku dodania kolejnego wzorca wydłuży się czas wyszukiwania, co wymaga dodania kolejnego warunku oraz wydłużenia wzorca przeszukującego wszystkie szukane elementy.
